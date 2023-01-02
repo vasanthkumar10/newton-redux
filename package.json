@@ -1,0 +1,22 @@
+{
+  "name": "newton-redux",
+  "version": "1.0.0",
+  "description": "This package describes the functionality of redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasanthkumar10/newton-redux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vasanthkumar10/newton-redux/issues"
+  },
+  "homepage": "https://github.com/vasanthkumar10/newton-redux#readme",
+  "dependencies": {
+    "redux": "^4.2.0"
+  }
+}
