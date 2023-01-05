@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/vasanthkumar10/newton-redux#readme",
   "dependencies": {
-    "redux": "^4.2.0"
+    "axios": "^1.2.2",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.2"
   }
 }

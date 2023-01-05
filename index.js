@@ -31,7 +31,9 @@ const redux = require("redux");
 const createStore = redux.createStore;
 
 const BUY_CAR = "BUY_CAR";
-const ADD_CAR = "ADD_CAR";
+const SELL_CAR = "SELL_CAR";
+const BUY_BIKE = "BUY__BIKE";
+const SELL_BIKE = "SELL_BIKE";
 
 // action obj -> type which specifies the action
 // let obj = {
@@ -48,11 +50,31 @@ function buyCar() {
   };
 }
 
+function sellCar(num = 1) {
+  return {
+    type: SELL_CAR,
+    quantity: num,
+  };
+}
+
+function buyBike() {
+  return {
+    type: BUY_BIKE,
+    info: "Buying a bike",
+  };
+}
+
+function sellBike(num = 1) {
+  return {
+    type: SELL_BIKE,
+    quantity: num,
+  };
+}
+
 // initial state
 const initialState = {
   numOfCars: 10,
-  numOfTyres: 5,
-  numOfSteeringWheel: 10,
+  numOfBikes: 15,
 };
 
 // reducers
@@ -60,6 +82,15 @@ const carReducer = (state = initialState, action) => {
   switch (action.type) {
     case BUY_CAR:
       return { ...state, numOfCars: state.numOfCars - 1 };
+
+    case SELL_CAR:
+      return { ...state, numOfCars: state.numOfCars + action.quantity };
+
+    case BUY_BIKE:
+      return { ...state, numOfBikes: state.numOfBikes - 1 };
+
+    case SELL_BIKE:
+      return { ...state, numOfBikes: state.numOfBikes + action.quantity };
 
     default:
       return state;
@@ -70,10 +101,26 @@ const carReducer = (state = initialState, action) => {
 const store = createStore(carReducer);
 console.log("Initial state", store.getState());
 const unsubscribe = store.subscribe(() =>
-  console.log("Updated state", store.getState())
+  console.log(
+    "The store is getting updated. The new state is -> ",
+    store.getState()
+  )
 );
 store.dispatch(buyCar());
 store.dispatch(buyCar());
-unsubscribe();
 store.dispatch(buyCar());
 store.dispatch(buyCar());
+// selling the car
+store.dispatch(sellCar());
+store.dispatch(sellCar(5));
+store.dispatch(buyCar());
+store.dispatch(buyCar());
+store.dispatch(sellCar(3));
+// unsubscribe(); // optional
+// console.log("after unsubscription");
+
+store.dispatch(buyBike());
+store.dispatch(buyBike());
+store.dispatch(buyBike());
+store.dispatch(sellBike());
+store.dispatch(sellBike(5));
